@@ -11,8 +11,7 @@ const AuthProvider = (app) => {
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user))
-    const GlobalUser = localStorage.getItem('user')
-    console.log(JSON.parse(GlobalUser))
+    const GlobalUser: Object = localStorage.getItem('user')
   }, [user])
 
   useEffect(() => {

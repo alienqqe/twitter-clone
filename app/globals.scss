@@ -12,7 +12,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: black;
+  background: rgb(0, 0, 0);
 }
 
 a {
@@ -27,7 +27,13 @@ a {
 }
 
 .sidebar-container {
-  overflow-y: hidden;
+  max-width: 208px;
+  margin-left: 13.5vw;
+}
+@media screen and (min-width: 1488px) {
+  .sidebar-container {
+    margin-left: 19vw;
+  }
 }
 
 .sidebar-ul {
@@ -48,5 +54,44 @@ a {
 .button-div {
   .btn {
     border-radius: 100px;
+    border: 0;
   }
+}
+.main-container {
+  width: 35vw;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+}
+  .input-form{
+    max-height: 100px;
+    input {
+    background-color: transparent;
+    border-radius: 100px;
+    width: 80%;
+  }
+  .btn{
+    border-radius: 100px;
+    width: 80px;
+  }
+}
+  
+
+@media screen and (max-width: 766px) {
+  .main-container {
+    width: 100vw;
+  }
+}
+.avatar {
+  border-radius: 50%;
+  height: auto;
+  max-width: 25%;
+}
+.input-avatar {
+  border-radius: 50%;
+  height: auto;
+  max-width: 12%;
 }

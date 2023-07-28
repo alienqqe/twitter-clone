@@ -1,9 +1,9 @@
 const Sidebar = () => {
   return (
-    <div className='sidebar-container container d-none d-md-flex'>
+    <div className='sidebar-container d-none d-md-flex '>
       <div className='col d-flex flex-column justify-content-start sidebar fw-bold'>
         <ul className='sidebar-ul mb-5 fs-4 '>
-          <li className='py-3 '>
+          <li className='py-3'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='16'
