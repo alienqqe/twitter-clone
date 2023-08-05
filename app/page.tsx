@@ -1,11 +1,13 @@
 import MainSection from './components/MainSection'
-import Sidebar from './components/Sidebar'
+import AuthProvider from './auth'
+import { TrendSection } from './components/TrendSection'
 
 export default function Home() {
   return (
     <>
-      <Sidebar />
+      <AuthProvider />
       <MainSection />
+      <TrendSection />
     </>
   )
 }

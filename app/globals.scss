@@ -66,19 +66,18 @@ a {
   transform: translate(-50%, -50%);
   overflow-y: auto;
 }
-  .input-form{
-    max-height: 100px;
-    input {
+.input-form {
+  max-height: 100px;
+  input {
     background-color: transparent;
     border-radius: 100px;
     width: 80%;
   }
-  .btn{
+  .btn {
     border-radius: 100px;
     width: 80px;
   }
 }
-  
 
 @media screen and (max-width: 766px) {
   .main-container {
@@ -94,4 +93,11 @@ a {
   border-radius: 50%;
   height: auto;
   max-width: 12%;
+}
+.trend-section {
+  border-radius: 30px;
+
+  li {
+    list-style: none;
+  }
 }

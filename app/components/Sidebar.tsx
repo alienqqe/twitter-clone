@@ -1,4 +1,4 @@
-const Sidebar = () => {
+const Sidebar = ({ inputRef }) => {
   return (
     <div className='sidebar-container d-none d-md-flex '>
       <div className='col d-flex flex-column justify-content-start sidebar fw-bold'>
@@ -158,7 +158,12 @@ const Sidebar = () => {
           </li>
         </ul>
         <div className='button-div d-block col ms-1 ms-lg-4'>
-          <button className='btn btn-lg btn-primary text-center d-none d-lg-block'>
+          <button
+            className='btn btn-lg btn-primary text-center d-none d-lg-block'
+            onClick={() => {
+              inputRef.current.focus()
+            }}
+          >
             Tweet
           </button>
           <button className='btn btn-lg btn-primary d-block d-lg-none ms-3'>

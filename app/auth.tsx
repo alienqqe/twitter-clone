@@ -27,13 +27,7 @@ const AuthProvider = (app) => {
     return unsub
   }, [auth])
 
-  return user != null ? (
-    <>
-      <img src={user.photoURL} alt='' />
-    </>
-  ) : (
-    <>loading</>
-  )
+  return user != null ? <></> : <></>
 }
 
 export default AuthProvider
