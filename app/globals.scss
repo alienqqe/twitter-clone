@@ -96,8 +96,33 @@ a {
 }
 .trend-section {
   border-radius: 30px;
-
+  margin-right: 8vw;
   li {
-    list-style: none;
+    cursor: pointer;
+    width: 100%;
+    list-style: inside;
+  }
+  li:hover {
+    background-color: gray;
+  }
+}
+@media screen and (min-width: 994px) and (max-width: 1518px) {
+  .trend-section {
+    margin-right: 0.5vw;
+  }
+}
+@media screen and (max-width: 1112px) {
+  .trend-container {
+    display: none;
+  }
+}
+@media screen and (min-width: 1112px) {
+  .trend-container {
+    display: flex;
+  }
+}
+@media screen and (max-width: 570px) {
+  .delete-button {
+    margin-right: 15vw;
   }
 }

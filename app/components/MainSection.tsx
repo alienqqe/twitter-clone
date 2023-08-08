@@ -97,21 +97,25 @@ const MainSection = () => {
                 <p className='d-flex align-items-end justify-content-end position-absolute end-0 top-0 me-2 mt-4'>
                   {tweet.currentDate}
                 </p>
-                <button
-                  className='d-flex align-items-end justify-content-end btn btn-outline-light position-absolute end-0 bottom-0 mb-4 me-2'
-                  onClick={() => handleDelete(tweet)}
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='16'
-                    height='16'
-                    fill='currentColor'
-                    className='bi bi-trash3-fill'
-                    viewBox='0 0 16 16'
+                {auth?.currentUser?.displayName === tweet.displayName ? (
+                  <button
+                    className='delete-button d-flex align-items-end justify-content-end btn btn-outline-light position-absolute end-0 bottom-0 mb-4 me-md-3 '
+                    onClick={() => handleDelete(tweet)}
                   >
-                    <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
-                  </svg>
-                </button>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-trash3-fill'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
+                    </svg>
+                  </button>
+                ) : (
+                  ''
+                )}
               </div>
               <span className='d-flex flex-column align-items-start justify-content-between ms-5 px-4 '>
                 <p className='px-2 ms-1'>{tweet.tweetText}</p>
