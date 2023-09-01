@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react'
 import { getAuth, signInWithPopup } from 'firebase/auth'
 import { app, googleAuthProvider } from './firebase'
+import { useRouter } from 'next/navigation'
 
 const AuthProvider = (app) => {
   const auth = getAuth()
-
+  const router = useRouter()
   const [user, setUser] = useState(auth.currentUser)
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const AuthProvider = (app) => {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((maybeUser) => {
       if (maybeUser != null) {
+        router.push('/')
         return setUser(maybeUser)
       }
 

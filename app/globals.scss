@@ -15,9 +15,11 @@ body {
   background: rgb(0, 0, 0);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+li {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -124,5 +126,15 @@ a {
 @media screen and (max-width: 570px) {
   .delete-button {
     margin-right: 15vw;
+  }
+}
+
+.profile-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .profile-photo {
+    border-radius: 50%;
   }
 }

@@ -3,12 +3,16 @@ import { useEffect, useRef, useState } from 'react'
 import { db } from '../firebase'
 import { onValue, ref, set, remove } from 'firebase/database'
 import { uid } from 'uid'
-import { getAuth } from 'firebase/auth'
+import { getAuth, signOut } from 'firebase/auth'
 import Sidebar from './Sidebar'
+import { useRouter } from 'next/navigation'
+import AuthProvider from '../auth'
 
 const MainSection = () => {
   const auth = getAuth()
   const user = auth.currentUser
+  const router = useRouter()
+  const [logIn, setLogIn] = useState(false)
   const [tweetText, setTweetText] = useState('')
   const [tweets, setTweets] = useState([])
   const inputRef = useRef(null)
@@ -43,10 +47,12 @@ const MainSection = () => {
 
       let currentDate = `${day}-${month}-${year}`
 
+      let DateNow = Date.now()
       const uuid = uid()
-      set(ref(db, `/${uuid}`), {
+      set(ref(db, `/${DateNow}`), {
         tweetText,
         uuid,
+        DateNow,
         photoURL,
         displayName,
         currentDate,
@@ -56,7 +62,23 @@ const MainSection = () => {
   }
   // delete
   const handleDelete = (tweet) => {
-    remove(ref(db, `/${tweet.uuid}`))
+    remove(ref(db, `/${tweet.DateNow}`))
+  }
+
+  const handleLogOut = () => {
+    if (confirm('Do you want to log out?')) {
+      signOut(auth)
+        .then(() => {
+          alert('Sigh out succesful')
+          router.push('/')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }
+  const handleSignIn = () => {
+    setLogIn(true)
   }
 
   return (
@@ -66,7 +88,9 @@ const MainSection = () => {
         <div className='main-section col mt-3 border border-secondary border-top-0 border-end-0 border-start-0 border-bottom-0 border-opacity-50 '>
           <form
             onSubmit={writeToDatabase}
-            className='input-form pb-5 flex-column'
+            className={`input-form pb-5 flex-column border border-secondary border-top-0 border-end-0 border-start-0 border-opacity-50 ${
+              tweets.length >= 1 ? 'border-bottom-0' : ''
+            }`}
           >
             <div className='d-inline-flex flex-row align-items-center justify-content-evenly'>
               <img
@@ -123,6 +147,21 @@ const MainSection = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className='signin-buttons position-absolute mt-3 me-5 end-0 top-0'>
+        <button
+          className='btn btn-primary me-2 rounded-pill'
+          onClick={handleSignIn}
+        >
+          Sign In
+        </button>
+        <button
+          className='btn btn-primary me-2 rounded-pill'
+          onClick={handleLogOut}
+        >
+          Log Out
+        </button>
+        {logIn ? <AuthProvider /> : ''}
       </div>
     </>
   )
